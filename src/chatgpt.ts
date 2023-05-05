@@ -1,3 +1,4 @@
+// @ts-ignore
 import { ChatGPTClient } from "@waylaidwanderer/chatgpt-api";
 import config from "./config.js";
 
@@ -8,7 +9,7 @@ const clientOptions = {
   // (Optional) Parameters as described in https://platform.openai.com/docs/api-reference/completions
   modelOptions: {
     // You can override the model name and any other parameters here, like so:
-    model: "gpt-3.5-turbo",
+    // model: "gpt-3.5-turbo",
     // I'm overriding the temperature to 0 here for demonstration purposes, but you shouldn't need to override this
     // for normal usage.
     temperature: 0,
@@ -56,7 +57,7 @@ export default class ChatGPT {
     const response = await this.chatGPT.sendMessage("hello");
     console.log("response test: ", response);
   }
-  async getChatGPTReply(content, contactId) {
+  async getChatGPTReply(content: any, contactId: any) {
     const data = await this.chatGPT.sendMessage(
       content,
       this.chatOption[contactId]
@@ -73,7 +74,7 @@ export default class ChatGPT {
     return response;
   }
 
-  async replyMessage(contact, content) {
+  async replyMessage(contact: any, content: any) {
     const { id: contactId } = contact;
     try {
       if (

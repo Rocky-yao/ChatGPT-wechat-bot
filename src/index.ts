@@ -1,4 +1,5 @@
 import { WechatyBuilder } from "wechaty";
+// @ts-ignore
 import qrcodeTerminal from "qrcode-terminal";
 import config from "./config.js";
 import ChatGPT from "./chatgpt.js";
@@ -7,6 +8,7 @@ let bot: any = {};
 const startTime = new Date();
 let chatGPTClient: any = null;
 initProject();
+// @ts-ignore
 async function onMessage(msg) {
   // 避免重复发送
   if (msg.date() < startTime) {
@@ -56,6 +58,7 @@ async function onMessage(msg) {
   }
 }
 
+// @ts-ignore
 function onScan(qrcode) {
   qrcodeTerminal.generate(qrcode, { small: true }); // 在console端显示二维码
   const qrcodeImageUrl = [
@@ -66,12 +69,14 @@ function onScan(qrcode) {
   console.log(qrcodeImageUrl);
 }
 
+// @ts-ignore
 async function onLogin(user) {
   console.log(`${user} has logged in`);
   const date = new Date();
   console.log(`Current time:${date}`);
 }
 
+// @ts-ignore
 function onLogout(user) {
   console.log(`${user} has logged out`);
 }
@@ -96,6 +101,7 @@ async function initProject() {
     bot
       .start()
       .then(() => console.log("Start to log in wechat..."))
+      // @ts-ignore
       .catch((e) => console.error(e));
   } catch (error) {
     console.log("init error: ", error);
